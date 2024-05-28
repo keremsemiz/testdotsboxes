@@ -1,0 +1,129 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link id="css1" rel="stylesheet" type="text/css" href="default.css">
+    <link rel="shortcut icon" href="logo.webp" type="image/x-icon">
+    <title>Dots and Boxes</title>
+    <script type="text/javascript" src="compiled.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div id="gameArea">
+            <canvas id="gameCanvas">Your browser doesn't support "canvas".</canvas>
+        </div>
+    
+        <div id="alphaPanel" class="panel alpha-panel">
+            <div class="panel-top">
+                <span id="alpha_name">Alpha</span>
+            </div>
+            <div class="panel-bottom">
+                Score: <span id="alpha_score">0</span>
+            </div>
+        </div>
+    
+        <div id="betaPanel" class="panel beta-panel">
+            <div class="panel-top">
+                <span id="beta_name">Beta</span>
+            </div>
+            <div class="panel-bottom">
+                Score: <span id="beta_score">0</span>
+            </div>
+        </div>
+    
+        <div id="backPanel" class="panel back-panel">
+            <input type="button" onclick="showMenu();" value="Menu">
+        </div>
+    
+        <div id="historyPanel" class="panel history-panel">
+            <input type="button" onclick="showHistory();" value="History">
+        </div>
+    
+        <div id="menuPanel" class="panel menu-panel">
+            <div class="panel-top">
+                <em>Dots and Boxes</em>
+            </div>
+            <div class="panel-bottom">
+                <span id="resumeButton"><input type="button" onclick="resumeGame();" value="Resume Game"></span><br>
+                <input type="button" onclick="newGame();" value="Start New Game"><br>
+                <input type="button" onclick="options();" value="Options"><br>
+            </div>
+        </div>
+    
+        <div id="howToPanel" class="panel how-to-panel">
+            <div class="panel-top">
+                <em>How to Play</em>
+            </div>
+            <div class="panel-bottom">
+                <p>The game starts with an empty square grid of dots. Starting with player one each player takes turns adding a single horizontal or vertical line to connect unjoined dots. When a player connects the fourth side of a 1x1 box they score one point and take another turn. The player with the most points at the end of the game wins.</p>
+                <input type="button" onclick="showMenu();" value="Back to Menu">
+            </div>
+        </div>
+    
+        <div id="optionsPanel" class="panel options-panel">
+            <div class="panel-top">
+                <em>Options</em>
+            </div>
+            <div class="panel-bottom">
+                <div class="option">
+                    Grid size <span id="board_size">5 x 5</span>
+                    <div class="styled-select">
+                        <select id="size" onChange="get_size(this.value);">
+                            <option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option selected>10</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="option">
+                    <div class="panel-top">
+                        <span id="alpha_name">Player 1</span>
+                    </div>
+                    <div class="panel-bottom">
+                        <div class="styled-select">
+                            <select id="alpha_list" onChange="change_alpha();">
+                                <option selected>Human</option><option>Easy AI</option><option>Medium AI</option><option>Hard AI</option><option>Expert AI</option><option>Master AI</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="option">
+                    <div class="panel-top">
+                        <span id="beta_name">Player 2</span>
+                    </div>
+                    <div class="panel-bottom">
+                        <div class="styled-select">
+                            <select id="beta_list" onChange="change_beta();">
+                                <option>Human</option><option selected>Easy AI</option><option>Medium AI</option><option>Hard AI</option><option>Expert AI</option><option>Master AI</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <input type="button" onclick="showMenu();" value="Back to Menu">
+            </div>
+        </div>
+    
+        <div id="historyList" class="panel history-list">
+            <div class="panel-top">
+                <b>Move History:</b>
+            </div>
+            <div class="panel-bottom">
+                <select id="history" size="10" onchange="change_history();"></select>
+                <input type="button" onclick="resumeGame();" value="Resume Game">
+            </div>
+        </div>
+    
+        <div id="messageBox" class="panel message-box">
+            <div class="panel-top">
+                <b>Dots and Boxes</b>
+            </div>
+            <div class="panel-bottom">
+                <span id="messageText">Message</span><br><br>
+                <input type="button" onclick="newGame();" value="Start New Game"><br>
+                <input type="button" onclick="showMenu();" value="Back to Menu">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
